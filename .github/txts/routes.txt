@@ -1,0 +1,38 @@
+AuthPage(
+  email: "contato@startto.dev"
+)
+
+ProfilePage(
+  userId: 3524664
+)
+
+ProfilePage(
+  user: User()
+)
+
+/auth?email=contato@startto.dev&name=Daniel&city=Campinas  =>  AuthPage()
+
+startto.dev/auth
+
+startto.dev/courses/flutterPro2
+
+startto.dev/auth?email=contato@startto.dev&name=Daniel&city=Campinas
+
+startto.dev/courses?course=flutterPro2
+
+Conheça já o usuário Daniel Ciolfi na plataforma Startto.dev
+(abra o perfil do Daniel Ciolfi)
+
+{"name": "Daniel Ciolfi", "id": 10}
+
+ProfilePage(
+	user: User()
+)
+
+/profile/10
+ProfilePage(userId: 10)
+
+1) Cada página cuida das suas próprias dependências
+2) Passar somente variáveis primitivas entre as rotas
+3) Utilizar rotas nomeadas
+4) Evitar retornar dados no pop
