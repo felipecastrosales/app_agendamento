@@ -1,5 +1,9 @@
+import 'package:agendamento/core/helpers/result.dart';
+import 'package:agendamento/core/helpers/token_interceptor.dart';
+import 'package:agendamento/features/auth/data/results/login_failed_result.dart';
 import 'package:agendamento/features/auth/models/user.dart';
 import 'package:dio/dio.dart';
+import 'package:pretty_dio_logger/pretty_dio_logger.dart';
 
 class AuthDatasource {
   final Dio _dio = Dio(
@@ -10,9 +14,14 @@ class AuthDatasource {
         'X-Parse-REST-API-Key': 'rAIV5OqJ2qbqdy85sd4XYkroT6ryOWDQGoplCg0a',
       },
     ),
-  );
+  )..interceptors.addAll(
+      [
+        TokenInterceptor(),
+        PrettyDioLogger(requestHeader: true, responseBody: true),
+      ],
+    );
 
-  Future<User> login({
+  Future<Result<LoginFailedResult, User>> login({
     required String email,
     required String password,
   }) async {
@@ -25,9 +34,16 @@ class AuthDatasource {
         },
       );
 
-      return User.fromMap(response.data['result']);
-    } on DioError {
-      rethrow;
+      return Success(
+        User.fromMap(response.data['result']),
+      );
+    } on DioException catch (e) {
+      if (e.type == DioExceptionType.unknown) {
+        return const Failure(LoginFailedResult.unknownError);
+      }
+      return const Failure(LoginFailedResult.unknownError);
+    } catch (_) {
+      return const Failure(LoginFailedResult.unknownError);
     }
   }
 }
