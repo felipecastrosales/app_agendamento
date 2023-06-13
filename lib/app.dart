@@ -1,11 +1,12 @@
-import 'package:agendamento/core/flavor/flavor_config.dart';
 import 'package:flutter/material.dart';
-
+import 'package:agendamento/core/flavor/flavor_config.dart';
+import 'core/di/di.dart';
 import 'core/route/app_routes.dart';
 
 boostrap(
   FlavorConfig flavorConfig,
 ) {
+  configureDependencies(flavorConfig);
   runApp(const App());
 }
 

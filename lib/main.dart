@@ -6,6 +6,8 @@ void main() {
     FlavorConfig(
       baseUrl: 'http://localhost:8080',
       flavor: AppFlavor.prod,
+      appId: '',
+      restKey: '',
     ),
   );
 }

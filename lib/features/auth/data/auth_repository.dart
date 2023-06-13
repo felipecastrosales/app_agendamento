@@ -4,7 +4,9 @@ import 'package:agendamento/features/auth/data/results/login_failed_result.dart'
 import 'package:agendamento/features/auth/models/user.dart';
 
 class AuthRepository {
-  final AuthDatasource _authDataSource = AuthDatasource();
+  AuthRepository(this._authDataSource);
+
+  final AuthDatasource _authDataSource;
   User? user;
 
   Future<Result<LoginFailedResult, User>> login({
