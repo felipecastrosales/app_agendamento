@@ -1,3 +1,4 @@
+import 'package:firebase_crashlytics/firebase_crashlytics.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
@@ -24,7 +25,27 @@ final router = GoRouter(
   routes: [
     GoRoute(
       path: '/',
-      builder: (context, state) => Container(color: Colors.yellow),
+      // builder: (context, state) => Container(color: Colors.yellow),
+      builder: (context, state) => Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            TextButton(
+              onPressed: () {
+                throw Exception();
+              },
+              child: const Text('throw Exception'),
+            ),
+            TextButton(
+              onPressed: () {
+                FirebaseCrashlytics.instance.crash();
+              },
+              child: const Text('crash'),
+            ),
+          ],
+        ),
+      ),
     ),
     GoRoute(
       // path: '/auth/:id?name&age=0',

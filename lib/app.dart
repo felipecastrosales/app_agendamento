@@ -1,4 +1,4 @@
-import 'package:flutter/foundation.dart';
+import 'package:firebase_crashlytics/firebase_crashlytics.dart';
 import 'package:flutter/material.dart';
 import 'package:agendamento/core/flavor/flavor_config.dart';
 import 'core/di/di.dart';
@@ -13,10 +13,20 @@ boostrap(
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
-  FlutterError.onError = (FlutterErrorDetails details) {
-    FlutterError.dumpErrorToConsole(details);
-    if (kReleaseMode) {}
+  FlutterError.onError = (errorDetails) {
+    FirebaseCrashlytics.instance.recordFlutterFatalError(errorDetails);
   };
+  // Pass all uncaught asynchronous errors that aren't handled by the Flutter framework to Crashlytics
+  // PlatformDispatcher.instance.onError = (error, stack) {
+  //   FirebaseCrashlytics.instance.recordError(error, stack, fatal: true);
+  //   return true;
+  // };
+  FirebaseCrashlytics.instance.setCustomKey('isPremium', true);
+  FirebaseCrashlytics.instance.setCustomKey('isTempPremium', true);
+  FirebaseCrashlytics.instance.setCustomKey('userId', '123456789');
+  FirebaseCrashlytics.instance.log('Boom 💥');
+  FirebaseCrashlytics.instance.setUserIdentifier('123456789');
+
   configureDependencies(flavorConfig);
   runApp(const App());
 }
