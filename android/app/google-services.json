@@ -1,0 +1,46 @@
+{
+  "project_info": {
+    "project_number": "844267198417",
+    "project_id": "app-agendamento-93658",
+    "storage_bucket": "app-agendamento-93658.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:844267198417:android:1c759fb6418a79c6f032f0",
+        "android_client_info": {
+          "package_name": "com.felipecastrosales.agendamento"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "844267198417-f8l63pc8m299rgla9c7akf78p86hg029.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCjSuVG-tSDeIkGb2NkzGJMii8Lhu-pQAE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "844267198417-f8l63pc8m299rgla9c7akf78p86hg029.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "844267198417-t1up6ktvsbrfgu0p2pch4bgk8os38stp.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.felipecastrosales.agendamento"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

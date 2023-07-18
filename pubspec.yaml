@@ -30,6 +30,11 @@ environment:
 dependencies:
   bloc: ^8.1.2
   dio: ^5.2.0+1
+  firebase_analytics: ^10.4.4
+  firebase_core: ^2.15.0
+  firebase_crashlytics: ^3.3.4
+  firebase_messaging: ^14.6.5
+  firebase_remote_config: ^4.2.4
   flutter:
     sdk: flutter
   flutter_bloc: ^8.1.3
